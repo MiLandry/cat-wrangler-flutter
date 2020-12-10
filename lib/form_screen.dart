@@ -8,18 +8,17 @@ class FormScreen extends StatefulWidget {
 }
 
 class FormScreenState extends State<FormScreen> {
-  String _name;
+  String _firstName;
+  String _lastName;
   String _email;
-  String _password;
-  String _url;
-  String _phoneNumber;
-  String _calories;
+  // String _phoneNumber;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  Widget _buildName() {
+  // TODO convert to factory method or something?
+  Widget _buildFirstName() {
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Name'),
+      decoration: InputDecoration(labelText: 'First Name'),
       maxLength: 30,
       validator: (String value) {
         if (value.isEmpty) {
@@ -29,7 +28,23 @@ class FormScreenState extends State<FormScreen> {
         return null;
       },
       onSaved: (String value) {
-        _name = value;
+        _firstName = value;
+      },
+    );
+  }
+
+    Widget _buildLastName() {
+    return TextFormField(
+      decoration: InputDecoration(labelText: 'Last Name'),
+      maxLength: 30,
+      validator: (String value) {
+        if (value.isEmpty) {
+          return 'Name is Required';
+        }
+        return null;
+      },
+      onSaved: (String value) {
+        _firstName = value;
       },
     );
   }
@@ -56,75 +71,75 @@ class FormScreenState extends State<FormScreen> {
     );
   }
 
-  Widget _buildPassword() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Password'),
-      keyboardType: TextInputType.visiblePassword,
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Password is Required';
-        }
+  // Widget _buildPassword() {
+  //   return TextFormField(
+  //     decoration: InputDecoration(labelText: 'Password'),
+  //     keyboardType: TextInputType.visiblePassword,
+  //     validator: (String value) {
+  //       if (value.isEmpty) {
+  //         return 'Password is Required';
+  //       }
 
-        return null;
-      },
-      onSaved: (String value) {
-        _password = value;
-      },
-    );
-  }
+  //       return null;
+  //     },
+  //     onSaved: (String value) {
+  //       _password = value;
+  //     },
+  //   );
+  // }
 
-  Widget _builURL() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Url'),
-      keyboardType: TextInputType.url,
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'URL is Required';
-        }
+  // Widget _builURL() {
+  //   return TextFormField(
+  //     decoration: InputDecoration(labelText: 'Url'),
+  //     keyboardType: TextInputType.url,
+  //     validator: (String value) {
+  //       if (value.isEmpty) {
+  //         return 'URL is Required';
+  //       }
 
-        return null;
-      },
-      onSaved: (String value) {
-        _url = value;
-      },
-    );
-  }
+  //       return null;
+  //     },
+  //     onSaved: (String value) {
+  //       _url = value;
+  //     },
+  //   );
+  // }
 
-  Widget _buildPhoneNumber() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Phone number'),
-      keyboardType: TextInputType.phone,
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Phone number is Required';
-        }
+  // Widget _buildPhoneNumber() {
+  //   return TextFormField(
+  //     decoration: InputDecoration(labelText: 'Phone number'),
+  //     keyboardType: TextInputType.phone,
+  //     validator: (String value) {
+  //       if (value.isEmpty) {
+  //         return 'Phone number is Required';
+  //       }
 
-        return null;
-      },
-      onSaved: (String value) {
-        _url = value;
-      },
-    );
-  }
+  //       return null;
+  //     },
+  //     onSaved: (String value) {
+  //       _url = value;
+  //     },
+  //   );
+  // }
 
-  Widget _buildCalories() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Calories'),
-      keyboardType: TextInputType.number,
-      validator: (String value) {
-        int calories = int.tryParse(value);
+  // Widget _buildCalories() {
+  //   return TextFormField(
+  //     decoration: InputDecoration(labelText: 'Calories'),
+  //     keyboardType: TextInputType.number,
+  //     validator: (String value) {
+  //       int calories = int.tryParse(value);
 
-        if (calories == null || calories <= 0) {
-          return 'Calories must be greater than 0';
-        }
+  //       if (calories == null || calories <= 0) {
+  //         return 'Calories must be greater than 0';
+  //       }
 
-        return null;
-      },
-      onSaved: (String value) {
-        _calories = value;
-      },
-    );
-  }
+  //       return null;
+  //     },
+  //     onSaved: (String value) {
+  //       _calories = value;
+  //     },
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -137,12 +152,13 @@ class FormScreenState extends State<FormScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              _buildName(),
+              _buildFirstName(),
+              _buildLastName(),
               _buildEmail(),
-              _buildPassword(),
-              _builURL(),
-              _buildPhoneNumber(),
-              _buildCalories(),
+              // _buildPassword(),
+              // _builURL(),
+              // _buildPhoneNumber(),
+              // _buildCalories(),
               SizedBox(height: 100),
               RaisedButton(
                 child: Text(
@@ -156,12 +172,12 @@ class FormScreenState extends State<FormScreen> {
 
                   _formKey.currentState.save();
 
-                  print(_name);
+                  // print(_name);
                   print(_email);
-                  print(_phoneNumber);
-                  print(_url);
-                  print(_password);
-                  print(_calories);
+                  // print(_phoneNumber);
+                  // print(_url);
+                  // print(_password);
+                  // print(_calories);
 
                   //Send to API
                 },
