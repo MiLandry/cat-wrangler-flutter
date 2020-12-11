@@ -179,11 +179,63 @@ class FormScreenState extends State<FormScreen> {
                   // print(_password);
                   // print(_calories);
 
+                  //save data to local storage for app on phone or howere that works
+
+                  //navigate to main menu
+
                   //Send to API
                 },
-              )
+              ),
+              ElevatedButton(
+                child: Text('Open route'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SecondRoute()),
+                  );
+                },
+              ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+
+// class FirstRoute extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('First Route'),
+//       ),
+//       body: Center(
+//         child: ElevatedButton(
+//           child: Text('Open route'),
+//           onPressed: () {
+//             // Navigate to second route when tapped.
+//           },
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+class SecondRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Second Route"),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text('Go back!'),
         ),
       ),
     );
