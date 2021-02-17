@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:cat_wrangler/screens/createEvent.dart';
 
 /// -----------------------------------
 ///          External Packages
@@ -14,7 +13,6 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'screens/home.dart';
 import 'screens/login.dart';
-//import 'screens/profile.dart';
 
 final FlutterAppAuth appAuth = FlutterAppAuth();
 final FlutterSecureStorage secureStorage = const FlutterSecureStorage();
@@ -170,7 +168,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Auth0 Demo',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Cat Demo'),
+          title: Text('Cat Wrangler'),
         ),
         body: Center(
           child: isBusy
