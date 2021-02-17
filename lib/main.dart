@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 
 /// -----------------------------------
 ///          External Packages
@@ -10,8 +11,8 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+import 'screens/home.dart';
 import 'screens/login.dart';
-import 'screens/profile.dart';
 
 final FlutterAppAuth appAuth = FlutterAppAuth();
 final FlutterSecureStorage secureStorage = const FlutterSecureStorage();
@@ -26,14 +27,11 @@ const AUTH0_CLIENT_ID = 'Te33Ar7pFRRFzbPy3RWw5UvKR1jmaSCL';
 const AUTH0_REDIRECT_URI = 'com.auth0.flutterdemo://login-callback';
 const AUTH0_ISSUER = 'https://$AUTH0_DOMAIN';
 
-
-
 /// -----------------------------------
 ///                 App
 /// -----------------------------------
 
 void main() => runApp(MyApp());
-
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
@@ -50,7 +48,7 @@ class _MyAppState extends State<MyApp> {
   String name;
   String picture;
 
-Map<String, dynamic> parseIdToken(String idToken) {
+  Map<String, dynamic> parseIdToken(String idToken) {
     final parts = idToken.split(r'.');
     assert(parts.length == 3);
 
@@ -121,8 +119,11 @@ Map<String, dynamic> parseIdToken(String idToken) {
     });
   }
 
+  void createEventAction() async {
 
-@override
+  }
+
+  @override
   void initState() {
     initAction();
     super.initState();
@@ -161,26 +162,22 @@ Map<String, dynamic> parseIdToken(String idToken) {
     }
   }
 
-
-@override
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Auth0 Demo',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Auth0 Demo'),
+          title: Text('Cat Wrangler'),
         ),
         body: Center(
           child: isBusy
               ? CircularProgressIndicator()
               : isLoggedIn
-                  ? Profile(logoutAction, name, picture)
+                  ? Home(logoutAction, name, picture)
                   : Login(loginAction, errorMessage),
         ),
       ),
     );
   }
 }
-
-
-
