@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 
-class CreateEvent extends StatelessWidget {
 
-
+class CreateEventScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(color: const Color(0xFF2DBD3A));
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+
+        RaisedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text('Go back'),
+        )
+      ]);
   }
 }
-

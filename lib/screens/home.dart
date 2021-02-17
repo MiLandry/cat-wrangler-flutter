@@ -1,11 +1,12 @@
+import 'package:cat_wrangler/screens/createEvent.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
-  final createEventAction;
+  final logoutAction;
   final String name;
   final String picture;
 
-  Home(this.createEventAction, this.name, this.picture);
+  Home(this.logoutAction, this.name, this.picture);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,15 @@ class Home extends StatelessWidget {
         SizedBox(height: 48.0),
         RaisedButton(
           onPressed: () {
-            createEventAction();
+            logoutAction();
+          },
+          child: Text('Logout'),
+        ),
+        RaisedButton(
+          onPressed: () {
+            Navigator.push(context,
+              MaterialPageRoute(builder: (context) => CreateEventScreen()),
+            );
           },
           child: Text('Create Event'),
         ),
