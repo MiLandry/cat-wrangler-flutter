@@ -19,4 +19,11 @@ https://auth0.com/blog/get-started-with-flutter-authentication/
 
 https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple
 
+## Navigation and routing:
+flutter navigation 2.0
+https://medium.com/flutter/learning-flutters-new-navigation-and-routing-system-7c9068155ade
+https://flutter.dev/docs/development/ui/navigation
+
+# Developer notes
+Live reload: manually click play button again in Android studio, TODO fix this centralize stuff in vscode
 
