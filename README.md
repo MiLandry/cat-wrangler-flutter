@@ -15,6 +15,10 @@ use android studio to launch
 ## Authentication : Oauth
 https://auth0.com/blog/get-started-with-flutter-authentication/
 
+## Swagger
+https://app.swaggerhub.com/home
+https://app.swaggerhub.com/apis-docs/guevarravirtual/cat-wrangler/1.0.0
+
 
 ## State management: Provider
 

@@ -1,0 +1,91 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: cat wrangler
+  description: For wrangling cats
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /guevarravirtual/cat-wrangler/1.0.0
+schemes:
+  - https
+paths:
+  /event:
+    post:
+      tags:
+      - event
+      summary: Creates a new event
+      operationId: addEvent
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: event object to be scheduled
+        required: true
+        schema:
+          $ref: '#/definitions/Event'
+      responses:
+        405:
+          description: Invalid input
+      security:
+      - eventstore_auth:
+        - write:events
+        - read:events
+    put:
+      tags:
+      - event
+      summary: Update an existing event
+      operationId: updateevent
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: event object that needs to be added to the store
+        required: true
+        schema:
+          $ref: '#/definitions/Event'
+      responses:
+        400:
+          description: Invalid ID supplied
+        404:
+          description: event not found
+        405:
+          description: Validation exception
+      security:
+      - eventstore_auth:
+        - write:events
+        - read:events
+
+definitions:
+  Event:
+    type: object
+    required:
+    - name
+    - startDateTime
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+        example: board game christmas get together
+      startDateTime:
+        type: string
+        format: date-time
+        description: date time for when event starts
+  ApiResponse:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      type:
+        type: string
+      message:
+        type: string
+
