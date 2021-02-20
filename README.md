@@ -51,3 +51,21 @@ Hot Server reload: press r in shell to reload
 TODO
 
 extract useful stuff from https://flutter.github.io/samples/#
+Automate API SDK, blocked by using windows, will want unix like to do correctly : https://vvsevolodovich.dev/working-with-openapi-in-flutter-fully-automatically/
+
+
+
+
+flutter has this really stupid thing of needing the dev to generate 'g' code (flutter byte code??) TODO make computer 'watch' and auto 'build'
+
+
+
+
+
+`npx @openapitools/openapi-generator-cli generate -i cat.yaml -g dart-dio -o api/`
+
+run this in API
+
+`pub run build_runner build`
+
+note there is no flutter in this

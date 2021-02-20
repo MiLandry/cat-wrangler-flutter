@@ -29,10 +29,6 @@ paths:
       responses:
         405:
           description: Invalid input
-      security:
-      - eventstore_auth:
-        - write:events
-        - read:events
     put:
       tags:
       - event
@@ -56,11 +52,6 @@ paths:
           description: event not found
         405:
           description: Validation exception
-      security:
-      - eventstore_auth:
-        - write:events
-        - read:events
-
 definitions:
   Event:
     type: object
@@ -88,4 +79,3 @@ definitions:
         type: string
       message:
         type: string
-
